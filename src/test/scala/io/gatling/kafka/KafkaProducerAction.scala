@@ -8,10 +8,9 @@ import io.gatling.core.stats.StatsEngine
 import io.gatling.core.stats.message.ResponseTimings
 import org.apache.avro.Schema
 
-class KafkaProducerAction(producerProtocol: KafkaProducerProtocol,
-                          schema: Schema,
+class KafkaProducerAction[K, V](producerProtocol: KafkaProducerProtocol[K, V],
                           statsEngine: StatsEngine,
-                          nextAction: Action)
+                          nextAction: Action, schema: Option[Schema] = None)
   extends ChainableAction {
   override def execute(session: Session): Unit = {
     val start = TimeHelper.nowMillis
