@@ -1,4 +1,4 @@
-package io.gatling.test
+package io.gatling.misc
 
 import java.util
 
@@ -7,13 +7,14 @@ import io.confluent.kafka.serializers.KafkaAvroDeserializer
 import org.apache.avro.Schema
 import org.apache.avro.generic.GenericRecord
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, ConsumerRecords, KafkaConsumer}
+
 import scala.collection.JavaConversions._
 
 object KafkaAvroConsumer extends App {
-  val kafkaTopic = "kafka_streams_testing398"
-  val kafkaBrokers = "10.97.181.169:9092"
+  val kafkaTopic = "kafka_streams_testing598"
+  val kafkaBrokers = "10.97.183.115:9092,10.97.191.51:9092,10.97.152.59:9093,10.97.152.66:9093"
 
-  val schemaRegistryUrl = "http://10.97.181.169:8081"
+  val schemaRegistryUrl = "http://10.97.183.115:8081"
   val VALUE_SERIALIZATION_FLAG = "value"
 
   val props = new util.HashMap[String, Object]()
@@ -42,6 +43,9 @@ object KafkaAvroConsumer extends App {
     val records: ConsumerRecords[GenericRecord, GenericRecord] = consumer.poll(100)
     val recordsIterator: java.util.Iterator[ConsumerRecord[GenericRecord, GenericRecord]] = records.iterator()
 
+//    if (records.count() > 0)
+//      println("Records : " + (System.currentTimeMillis() / 1000) + " - " + records.count())
+
     while (recordsIterator.hasNext) {
       val currentRecord = recordsIterator.next()
 
@@ -51,7 +55,7 @@ object KafkaAvroConsumer extends App {
         val valueStruct = value
 
         for (field <- schema.getFields.toList) {
-          print(valueStruct.get(field.name()))
+          print("Records : " + (System.currentTimeMillis() / 1000) + " - " + valueStruct.get(field.name()))
         }
         println()
       }

@@ -10,7 +10,7 @@ import org.apache.avro.Schema
 import org.apache.avro.generic.GenericRecord
 import org.apache.kafka.clients.producer.ProducerConfig
 
-class CustomSimulation extends Simulation {
+class SimulationWithAvroSchema extends Simulation {
   val kafkaTopic = "kafka_streams_testing398"
   val kafkaBrokers = "10.97.181.169:9092"
 

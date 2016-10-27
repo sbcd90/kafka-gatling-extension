@@ -10,7 +10,7 @@ import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 
 class SimpleKafkaProducerSimulation extends Simulation {
-  val kafkaTopic = "kafka_streams_testing498"
+  val kafkaTopic = "kafka_streams_testing698"
   val kafkaBrokers = "10.97.181.169:9092"
 
   val props = new util.HashMap[String, Object]()
