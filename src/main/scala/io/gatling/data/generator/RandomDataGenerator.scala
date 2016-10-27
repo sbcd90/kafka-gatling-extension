@@ -15,6 +15,7 @@ class RandomDataGenerator[K: Manifest, V: Manifest] {
   private final val CharManifest = manifest[Char]
   private final val StringManifest = manifest[String]
   private final val BooleanManifest = manifest[Boolean]
+  private final val ByteArrayManifest = manifest[Array[Byte]]
   private final val AnyManifest = manifest[Any]
   private final val AnyRefManifest = manifest[AnyRef]
   private final val GenericRecordManifest = manifest[GenericRecord]
@@ -30,10 +31,12 @@ class RandomDataGenerator[K: Manifest, V: Manifest] {
       case CharManifest => 'C'.asInstanceOf[K]
       case StringManifest => "Str".asInstanceOf[K]
       case BooleanManifest => true.asInstanceOf[K]
+      case ByteArrayManifest => "Str".getBytes.asInstanceOf[K]
       case AnyManifest => 'C'.asInstanceOf[K]
       case AnyRefManifest => "Str".asInstanceOf[K]
       case GenericRecordManifest => generateDataForAvroSchema(schema).asInstanceOf[K]
-      case x if x.runtimeClass.isArray => Array(1, 2, 3, 4, 5).asInstanceOf[K]
+      case x if x.runtimeClass.isArray =>
+        Array(1, 2, 3, 4, 5).asInstanceOf[K]
     }
   }
 
@@ -48,10 +51,12 @@ class RandomDataGenerator[K: Manifest, V: Manifest] {
       case CharManifest => 'C'.asInstanceOf[V]
       case StringManifest => "Str".asInstanceOf[V]
       case BooleanManifest => true.asInstanceOf[V]
+      case ByteArrayManifest => "Str".getBytes.asInstanceOf[V]
       case AnyManifest => 'C'.asInstanceOf[V]
       case AnyRefManifest => "Str".asInstanceOf[V]
       case GenericRecordManifest => generateDataForAvroSchema(schema).asInstanceOf[V]
-      case x if x.runtimeClass.isArray => Array(1, 2, 3, 4, 5).asInstanceOf[V]
+      case x if x.runtimeClass.isArray =>
+        Array(1, 2, 3, 4, 5).asInstanceOf[V]
     }
   }
 

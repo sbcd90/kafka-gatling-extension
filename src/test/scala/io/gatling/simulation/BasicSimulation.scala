@@ -9,7 +9,7 @@ import io.gatling.kafka.{KafkaProducerBuilder, KafkaProducerProtocol}
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 
-class SimpleKafkaProducerSimulation extends Simulation {
+class BasicSimulation extends Simulation {
   val kafkaTopic = "kafka_streams_testing698"
   val kafkaBrokers = "10.97.181.169:9092"
 
