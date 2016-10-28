@@ -30,11 +30,11 @@ mvn gatling:execute -Dgatling.simulationClass=io.gatling.simulation.BasicSimulat
 
 ## Features
 
-- Custom avro schemas can be passed for generating records using them. Here is an [example](src/test/scala/io/gatling/simulation/SimulationWithAvroSchema.scala)
+- Custom `avro schemas` can be passed for generating records using them. Here is an [example](src/test/scala/io/gatling/simulation/SimulationWithAvroSchema.scala)
 
 - An in-built Random Data Generator is provided for getting started with Load tests quickly.
 
 - Custom data generators can be added if necessary. Here is an [example](src/test/scala/io/gatling/simulation/SimulationWithCustomData.scala)
 
-- Gatling feeders are supported & a custom csv file can be passed for loading data. Here is an [example](src/test/scala/io/gatling/simulation/FeederByteArraySimulation.scala)
+- `Gatling feeders` are supported & a `custom csv file can be passed for loading data`. Here is an [example](src/test/scala/io/gatling/simulation/FeederByteArraySimulation.scala)
 
