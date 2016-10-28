@@ -10,8 +10,8 @@ import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.ByteArraySerializer
 
 class ByteArraySimulation extends Simulation {
-  val kafkaTopic = "kafka_streams_testing798"
-  val kafkaBrokers = "10.97.181.169:9092"
+  val kafkaTopic = "test_topic"
+  val kafkaBrokers = "localhost:9092"
 
   val props = new util.HashMap[String, Object]()
   props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBrokers)

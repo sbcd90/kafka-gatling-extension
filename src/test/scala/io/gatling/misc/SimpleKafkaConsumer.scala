@@ -6,8 +6,8 @@ import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, Consum
 import org.apache.kafka.common.serialization.StringDeserializer
 
 object SimpleKafkaConsumer extends App {
-  val kafkaTopic = "kafka_streams_testing698"
-  val kafkaBrokers = "10.97.181.169:9092"
+  val kafkaTopic = "test_topic"
+  val kafkaBrokers = "localhost:9092"
 
   val props = new util.HashMap[String, Object]()
   props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBrokers)

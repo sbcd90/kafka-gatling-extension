@@ -11,10 +11,10 @@ import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, Consum
 import scala.collection.JavaConversions._
 
 object KafkaAvroConsumer extends App {
-  val kafkaTopic = "kafka_streams_testing998"
-  val kafkaBrokers = "10.97.181.169:9092"
+  val kafkaTopic = "test_topic"
+  val kafkaBrokers = "localhost:9092"
 
-  val schemaRegistryUrl = "http://10.97.181.169:8081"
+  val schemaRegistryUrl = "http://localhost:8081"
   val VALUE_SERIALIZATION_FLAG = "value"
 
   val props = new util.HashMap[String, Object]()
