@@ -6,7 +6,7 @@
 
     <groupId>io.gatling</groupId>
     <artifactId>kafka-gatling-extension</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <gatling.version>2.2.2</gatling.version>
@@ -22,6 +22,11 @@
             <id>confluent</id>
             <name>confluent</name>
             <url>http://packages.confluent.io/maven/</url>
+        </repository>
+        <repository>
+            <id>KafkaGatlingExtnRepo</id>
+            <name>KafkaGatlingExtnRepo</name>
+            <url>https://dl.bintray.com/sbcd90/kafka-gatling-extension</url>
         </repository>
     </repositories>
 
@@ -52,6 +57,14 @@
             <version>${confluent.version}</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-sbcd90-kafka_gatling_extension</id>
+            <url>https://api.bintray.com/maven/sbcd90/io.gatling/kafka-gatling-extension/;publish=1</url>
+        </repository>
+
+    </distributionManagement>
 
     <profiles>
         <profile>

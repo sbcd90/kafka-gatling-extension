@@ -11,6 +11,28 @@ The extension supports `Apache Kafka 0.10 protocol` & latest released version of
 
 ## Installation
 
+### Installation as a maven plugin
+
+In `pom.xml` add,
+
+```
+<repository>
+   <id>gatling-kafka-extension</id>
+   <name>gatling-kafka-extension</name>
+   <url>https://dl.bintray.com/sbcd90/io.gatling/</url>
+</repository>
+```
+
+add the extension as a maven dependency,
+
+```
+<dependency>
+   <groupId>io.gatling</groupId>
+   <artifactId>kafka-gatling-extension</artifactId>
+   <version>1.0</version>
+</dependency>
+```
+
 ### Installation from source
 
 ```
