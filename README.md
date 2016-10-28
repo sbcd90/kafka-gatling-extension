@@ -26,7 +26,7 @@ mvn clean install -Ppackage-only
 mvn gatling:execute -Dgatling.simulationClass=io.gatling.simulation.BasicSimulation
 ```
 
-- Start the [Simple Kafka Consumer](src/test/scala/io/gatling/consumer/SimpleKafkaConsumer) after pointing it to the right Kafka coordinates.
+- Start the [Simple Kafka Consumer](src/test/scala/io/gatling/consumer/SimpleKafkaConsumer.scala) after pointing it to the right Kafka coordinates.
 
 ## Features
 
