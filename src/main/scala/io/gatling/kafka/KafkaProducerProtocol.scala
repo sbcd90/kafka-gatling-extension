@@ -23,6 +23,7 @@ class KafkaProducerProtocol[K, V](props: java.util.HashMap[String, Object],
       value = dataGenerator.generateValue()
     }
 
+    println(value)
     val record = new ProducerRecord[K, V](topics, key, value)
     kafkaProducer.send(record)
   }
