@@ -13,14 +13,9 @@ class KafkaProducerAction[K, V](producerProtocol: KafkaProducerProtocol[K, V],
                           nextAction: Action, schema: Option[Schema] = None)
   extends ChainableAction {
   override def execute(session: Session): Unit = {
-    val attributes = session.attributes
-    for ((key, value) <- attributes) {
-      println(key + " - " + value)
-    }
-
     val start = TimeHelper.nowMillis
     try {
-      producerProtocol.call(schema)
+      producerProtocol.call(session, schema)
       val end = TimeHelper.nowMillis
 
       statsEngine.logResponse(session, "test",

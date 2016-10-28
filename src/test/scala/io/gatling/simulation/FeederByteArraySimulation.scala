@@ -20,9 +20,8 @@ class FeederByteArraySimulation extends Simulation {
   props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
     classOf[ByteArraySerializer])
 
-  val dataGenerator = new RandomDataGenerator[Array[Byte], Array[Byte]]()
   val kafkaProducerProtocol =
-    new KafkaProducerProtocol[Array[Byte], Array[Byte]](props, kafkaTopic, dataGenerator)
+    new KafkaProducerProtocol[Array[Byte], Array[Byte]](props, kafkaTopic)
   val scn = scenario("Kafka Producer Call")
     .feed(csv("test_data1.csv").circular)
     .exec(KafkaProducerBuilder[Array[Byte], Array[Byte]]())
