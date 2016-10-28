@@ -9,25 +9,32 @@ The `Kafka Gatling extension` can be used for stress testing an existing Apache 
 
 The extension supports `Apache Kafka 0.10 protocol` & latest released version of Gatling `2.2`.
 
+## Installation
+
+### Installation from source
+
+```
+mvn clean install -Ppackage-only
+```
+
 ## Getting started
 
-- Here is how we can create a simple Simulation.
+- Look into the file [BasicSimulation.scala](src/test/scala/io/gatling/simulation/BasicSimulation.scala). Point it to the right `Kafka Broker coordinates` & provide the correct Kafka `topic` name.
+- Start the simulation using the command
 
 ```
-class SimpleKafkaProducerSimulation extends Simulation {
-  val kafkaTopic = "kafka_streams_testing498"
-  val kafkaBrokers = "10.97.181.169:9092"
-
-  val props = new util.HashMap[String, Object]()
-  props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBrokers)
-  props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer])
-  props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer])
-
-  val dataGenerator = new RandomDataGenerator[String, String]()
-  val kafkaProducerProtocol = new KafkaProducerProtocol[String, String](props, kafkaTopic,
-    dataGenerator)
-  val scn = scenario("Kafka Producer Call").exec(KafkaProducerBuilder[String, String]())
-
-  setUp(scn.inject(atOnceUsers(1))).protocols(kafkaProducerProtocol)
-}
+mvn gatling:execute -Dgatling.simulationClass=io.gatling.simulation.BasicSimulation
 ```
+
+- Start the [Simple Kafka Consumer](src/test/scala/io/gatling/consumer/SimpleKafkaConsumer) after pointing it to the right Kafka coordinates.
+
+## Features
+
+- Custom avro schemas can be passed for generating records using them. Here is an [example](src/test/scala/io/gatling/simulation/SimulationWithAvroSchema.scala)
+
+- An in-built Random Data Generator is provided for getting started with Load tests quickly.
+
+- Custom data generators can be added if necessary. Here is an [example](src/test/scala/io/gatling/simulation/SimulationWithCustomData.scala)
+
+- Gatling feeders are supported & a custom csv file can be passed for loading data. Here is an [example](src/test/scala/io/gatling/simulation/FeederByteArraySimulation.scala)
+

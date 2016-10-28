@@ -1,4 +1,4 @@
-package io.gatling.misc
+package io.gatling.consumer
 
 import java.util
 
